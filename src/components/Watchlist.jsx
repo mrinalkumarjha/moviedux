@@ -1,11 +1,23 @@
 import React from "react";
 import '../styles.css';
+import MovieCard from "./MovieCard";
 
-export default function Watchlist() {
+export default function Watchlist({ movies, watchlist, toggleWatchlist }) {
   return (
-    <div className="watchlist">
+    <div>
       <h1 className="title">Your Watchlist</h1>
-      <p className="watchlist-message">No movies in your watchlist yet.</p>
+      {/* <p className="watchlist-message">No movies in your watchlist yet.</p> */}
+      <div className="watchlist">
+        {
+          watchlist.map(id => {
+            const movie = movies.find(movie => movie.id === id);
+            return <MovieCard key={id} movie={movie}
+             toggleWatchlist={toggleWatchlist} isWatchlisted={true}>
+             </MovieCard>
+          })
+
+        }
+      </div>
     </div>
   );
 }
