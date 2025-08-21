@@ -20,8 +20,14 @@ export default function TicketForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const ticketData = {
+            id: new Date().toISOString(), // Simple ID generation using timestamp
+            title,
+            description,
+            priority
+        }
+
         // Here you would typically handle the form submission, e.g., send data to an API
-        console.log("Form submitted with:", { title, description, priority });
         clearForm();
     }
 
